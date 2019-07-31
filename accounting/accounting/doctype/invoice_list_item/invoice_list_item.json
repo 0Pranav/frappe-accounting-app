@@ -1,0 +1,67 @@
+{
+ "creation": "2019-07-30 19:23:26.766929",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item",
+  "item_unit_price",
+  "item_units",
+  "item_total"
+ ],
+ "fields": [
+  {
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "item.item_default_price",
+   "fieldname": "item_unit_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Price per unit",
+   "reqd": 1
+  },
+  {
+   "fieldname": "item_units",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "No. Of Units",
+   "reqd": 1
+  },
+  {
+   "fieldname": "item_total",
+   "fieldtype": "Read Only",
+   "in_list_view": 1,
+   "label": "Item Total",
+   "reqd": 1
+  }
+ ],
+ "modified": "2019-07-31 12:31:52.902284",
+ "modified_by": "Administrator",
+ "module": "Accounting",
+ "name": "Invoice List Item",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
