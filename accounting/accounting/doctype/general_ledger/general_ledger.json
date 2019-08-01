@@ -8,6 +8,7 @@
   "account_affected",
   "credited_amount",
   "debited_amount",
+  "account_balance",
   "txn_type",
   "txn_id"
  ],
@@ -56,10 +57,15 @@
    "label": "Debit",
    "precision": "2",
    "reqd": 1
+  },
+  {
+   "fieldname": "account_balance",
+   "fieldtype": "Currency",
+   "label": "Account Balance"
   }
  ],
  "in_create": 1,
- "modified": "2019-07-31 15:30:12.724175",
+ "modified": "2019-08-01 11:47:48.485431",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "General Ledger",
