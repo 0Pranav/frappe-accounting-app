@@ -9,4 +9,4 @@ from frappe.model.document import Document
 from frappe.utils.nestedset import NestedSet
 
 class Account(NestedSet):
-	nsm_parent_field = "parent_tree"
+	nsm_parent_field = "parent_account"
