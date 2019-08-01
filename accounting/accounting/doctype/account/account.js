@@ -7,7 +7,8 @@ frappe.ui.form.on('Account',
 		frm.set_query('parent_account', () => {
 			return {
 				filters: {
-					is_group: "1"
+					"is_group": "1",
+					"name":["!=",frm.doc.name],
 				}
 			}
 		})
