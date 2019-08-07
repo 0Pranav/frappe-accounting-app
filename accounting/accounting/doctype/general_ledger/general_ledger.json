@@ -1,5 +1,6 @@
 {
- "creation": "2019-07-31 14:34:30.974648",
+ "autoname": "format:LDGR-{YYYY}-{MM}-{#####}",
+ "creation": "2019-08-07 13:17:59.583305",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
@@ -18,20 +19,6 @@
    "fieldtype": "Date",
    "in_list_view": 1,
    "label": "Posting Date",
-   "reqd": 1
-  },
-  {
-   "fieldname": "txn_type",
-   "fieldtype": "Link",
-   "label": "Txn Type",
-   "options": "DocType",
-   "reqd": 1
-  },
-  {
-   "fieldname": "txn_id",
-   "fieldtype": "Dynamic Link",
-   "label": "Txn ID",
-   "options": "txn_type",
    "reqd": 1
   },
   {
@@ -62,10 +49,24 @@
    "fieldname": "account_balance",
    "fieldtype": "Currency",
    "label": "Account Balance"
+  },
+  {
+   "fieldname": "txn_type",
+   "fieldtype": "Link",
+   "label": "Txn Type",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "fieldname": "txn_id",
+   "fieldtype": "Dynamic Link",
+   "label": "Txn ID",
+   "options": "txn_type",
+   "reqd": 1
   }
  ],
  "in_create": 1,
- "modified": "2019-08-01 11:47:48.485431",
+ "modified": "2019-08-07 14:05:26.844687",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "General Ledger",
