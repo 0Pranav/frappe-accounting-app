@@ -9,7 +9,8 @@
   "customer_deatils_section",
   "customer_address",
   "customer_email",
-  "customer_phone"
+  "customer_phone",
+  "customer_account"
  ],
  "fields": [
   {
@@ -41,9 +42,15 @@
    "fieldname": "customer_phone",
    "fieldtype": "Data",
    "label": "Customer Phone No."
+  },
+  {
+   "fieldname": "customer_account",
+   "fieldtype": "Link",
+   "label": "Customer Account",
+   "options": "Account"
   }
  ],
- "modified": "2019-07-31 11:20:52.207997",
+ "modified": "2019-08-07 14:55:16.579671",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Customer",
