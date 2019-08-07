@@ -6,6 +6,8 @@
  "engine": "InnoDB",
  "field_order": [
   "supplier_name",
+  "section_break_2",
+  "supplier_account",
   "contact_section",
   "supplier_email",
   "supplier_address",
@@ -44,9 +46,19 @@
    "fieldname": "supplier_phone",
    "fieldtype": "Data",
    "label": "Supplier Phone No."
+  },
+  {
+   "fieldname": "supplier_account",
+   "fieldtype": "Link",
+   "label": "Supplier Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "section_break_2",
+   "fieldtype": "Section Break"
   }
  ],
- "modified": "2019-07-30 19:19:40.563152",
+ "modified": "2019-08-07 14:54:27.129205",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Supplier",
