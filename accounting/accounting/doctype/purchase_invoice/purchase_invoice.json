@@ -43,8 +43,7 @@
    "read_only": 1
   }
  ],
- "is_submittable": 1,
- "modified": "2019-07-31 12:59:50.191849",
+ "modified": "2019-08-07 14:07:11.917022",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Purchase Invoice",
