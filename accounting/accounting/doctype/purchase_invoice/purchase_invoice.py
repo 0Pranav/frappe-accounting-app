@@ -9,7 +9,7 @@ from frappe.model.document import Document
 
 
 class PurchaseInvoice(Document):
-    def save(self, *args, **kwargs):
+    def on_submit(self, *args, **kwargs):
         # Create general ledger entry here
         supplier = frappe.get_doc("Supplier", self.supplier)
         supplier_account = frappe.get_doc("Account", supplier.supplier_account)

@@ -8,7 +8,7 @@ import datetime
 from frappe.model.document import Document
 
 class SalesInvoice(Document):
-	def save(self, *args, **kwargs):
+	def on_submit(self, *args, **kwargs):
 		customer = frappe.get_doc("Customer",self.customer)
 		customer_account = frappe.get_doc("Account",customer.customer_account)
 		sales_account = frappe.get_doc("Account","Sales Income")
