@@ -1,5 +1,5 @@
 {
- "autoname": "format:SALE-{YYYY}-{MM}-{customer.customer_name}-####",
+ "autoname": "format:SALE-{YYYY}-{MM}-{customer}-{####}",
  "creation": "2019-07-31 11:23:00.654677",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -33,7 +33,7 @@
    "reqd": 1
   }
  ],
- "modified": "2019-07-31 11:23:00.654677",
+ "modified": "2019-08-09 13:38:18.071367",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Sales Invoice",

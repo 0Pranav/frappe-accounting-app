@@ -16,29 +16,29 @@ class SalesInvoice(Document):
 		super().save(self,*args,**kwargs)
 		
 		# Adjust balance in accounts
-		customer_account.balance = customer_account.balance - self.total
+		customer_account.account_balance = customer_account.account_balance + self.total
 		customer_account.save()
-		sales_account.balance = sales_account.balance + self.total
+		sales_account.account_balance = sales_account.account_balance + self.total
 		sales_account.save()
 		
 		# Debit Entry
 		debit_entry = frappe.new_doc("General Ledger")
 		debit_entry.posting_date = datetime.date.today()
-		debit_entry.account_affected = sales_account.name
+		debit_entry.account_affected = customer_account.name
 		debit_entry.credited_amount = 0
 		debit_entry.debited_amount = self.total
-		debit_entry.account_balance = sales_account.account_balance
+		debit_entry.account_balance = customer_account.account_balance
 		debit_entry.txn_type = "Sales Invoice"
 		debit_entry.txn_id = self.name
-		debit_entry.insert()
+		debit_entry.save()
 
 		# Credit Entry
 		credit_entry = frappe.new_doc("General Ledger")
-		debit_entry.posting_date = datetime.date.today()
-		debit_entry.account_affected = customer_account.name
-		debit_entry.credited_amount = self.total
-		debit_entry.debited_amount = 0
-		debit_entry.account_balance = customer_account.balance
-		debit_entry.txn_type = "Sales Invoice"
-		debit_entry.txn_id = self.name
-		debit_entry.insert()
+		credit_entry.posting_date = datetime.date.today()
+		credit_entry.account_affected = sales_account.name
+		credit_entry.credited_amount = self.total
+		credit_entry.debited_amount = 0
+		credit_entry.account_balance = sales_account.account_balance
+		credit_entry.txn_type = "Sales Invoice"
+		credit_entry.txn_id = self.name
+		credit_entry.save()
