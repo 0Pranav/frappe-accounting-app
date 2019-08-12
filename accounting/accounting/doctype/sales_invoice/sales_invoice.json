@@ -28,9 +28,10 @@
   },
   {
    "fieldname": "total",
-   "fieldtype": "Read Only",
+   "fieldtype": "Currency",
    "in_list_view": 1,
    "label": "Total",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -44,7 +45,7 @@
   }
  ],
  "is_submittable": 1,
- "modified": "2019-08-12 20:01:48.937355",
+ "modified": "2019-08-12 20:16:34.802481",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Sales Invoice",

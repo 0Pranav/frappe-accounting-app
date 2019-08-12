@@ -3,7 +3,7 @@
 frappe.ui.form.on('Purchase Invoice', 'refresh', function (frm) {
 	frm.add_custom_button('Payment Entry', () => { alert("Paid"), 'Make' });
 })
-frappe.ui.form.on('Purchase Invoice', 'refresh', updateTotalForInvoice)
+// frappe.ui.form.on('Purchase Invoice', 'refresh', updateTotalForInvoice)
 frappe.ui.form.on('Invoice List Item', 'item_unit_price', updateTotalForItem)
 frappe.ui.form.on('Invoice List Item', 'item_units', updateTotalForItem)
 

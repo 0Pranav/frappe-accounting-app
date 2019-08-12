@@ -8,12 +8,10 @@ import datetime
 from frappe.model.document import Document
 
 class SalesInvoice(Document):
-	def on_submit(self, *args, **kwargs):
+	def before_submit(self, *args, **kwargs):
 		customer = frappe.get_doc("Customer",self.customer)
 		customer_account = frappe.get_doc("Account",customer.customer_account)
 		sales_account = frappe.get_doc("Account","Sales Income")
-		
-		super().save(self,*args,**kwargs)
 		
 		# Adjust balance in accounts
 		customer_account.account_balance = customer_account.account_balance + self.total

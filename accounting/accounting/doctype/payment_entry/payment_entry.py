@@ -7,4 +7,8 @@ from __future__ import unicode_literals
 from frappe.model.document import Document
 
 class PaymentEntry(Document):
-	pass
+	def save(self,*args,**args):
+		if self.invoice_type == "Sales Invoice":
+			print("Sales Invoice")
+		elif self.invoice_type == "Purchase Invoice":
+			print("Purchase Invoice")

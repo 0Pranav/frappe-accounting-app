@@ -9,12 +9,11 @@ from frappe.model.document import Document
 
 
 class PurchaseInvoice(Document):
-    def on_submit(self, *args, **kwargs):
+    def before_submit(self, *args, **kwargs):
         # Create general ledger entry here
         supplier = frappe.get_doc("Supplier", self.supplier)
         supplier_account = frappe.get_doc("Account", supplier.supplier_account)
         stock_expense_account = frappe.get_doc("Account", "Stock Expense")
-        super().save(self, *args, **kwargs)
 
         # Adjust Balance in accounts
         supplier_account.account_balance = supplier_account.account_balance - self.total
