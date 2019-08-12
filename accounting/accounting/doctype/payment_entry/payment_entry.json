@@ -1,0 +1,61 @@
+{
+ "autoname": "format:PYMT-{YYYY}-{MM}-{from_account}-{####}",
+ "creation": "2019-08-09 14:39:47.559159",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "payment_type",
+  "against_incoice",
+  "from_account"
+ ],
+ "fields": [
+  {
+   "fieldname": "payment_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Payment Type",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "fieldname": "against_incoice",
+   "fieldtype": "Dynamic Link",
+   "in_list_view": 1,
+   "label": "Against Invoice",
+   "options": "payment_type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "from_account",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "From Account",
+   "options": "Account",
+   "reqd": 1
+  }
+ ],
+ "modified": "2019-08-12 16:16:19.894592",
+ "modified_by": "Administrator",
+ "module": "Accounting",
+ "name": "Payment Entry",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
