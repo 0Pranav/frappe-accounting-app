@@ -8,7 +8,8 @@
   "customer",
   "items",
   "total",
-  "amended_from"
+  "amended_from",
+  "outstanding_amount"
  ],
  "fields": [
   {
@@ -42,13 +43,20 @@
    "options": "Sales Invoice",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "outstanding_amount",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Outstanding Amount"
   }
  ],
  "is_submittable": 1,
- "modified": "2019-08-12 20:16:34.802481",
+ "modified": "2019-08-13 13:33:26.578720",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Sales Invoice",
+ "name_case": "UPPER CASE",
  "owner": "Administrator",
  "permissions": [
   {

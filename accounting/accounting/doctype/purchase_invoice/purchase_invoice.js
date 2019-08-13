@@ -20,6 +20,7 @@ function updateTotalForInvoice(frm, cdt, cdn) {
 		total_amount += flt(d.item_total);
 	});
 	frm.set_value('total', total_amount);
+	frm.set_value('outstanding_amount',total_amount);
 }
 
 //frappe.ui.form.on('Invoice List Item', 'item', function (frm,cdt,cdn) {
