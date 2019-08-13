@@ -13,12 +13,5 @@ frappe.ui.form.on('Payment Entry', {
 				}
 			}
 		})
-		frm.set_query("from_account",()=>{
-			return {
-				filters : {
-					account_type : "Credit"
-				}
-			}
-		})
 	}
 });
