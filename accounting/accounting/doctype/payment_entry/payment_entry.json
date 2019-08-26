@@ -1,13 +1,15 @@
 {
- "autoname": "format:PYMT-{YYYY}-{MM}-{from_account}-{####}",
+ "autoname": "format:PYMT-{YYYY}-{MM}-{####}",
  "creation": "2019-08-09 14:39:47.559159",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "payment_type",
-  "against_incoice",
-  "from_account"
+  "against_invoice",
+  "payment_method",
+  "payment_amount",
+  "amended_from"
  ],
  "fields": [
   {
@@ -19,7 +21,21 @@
    "reqd": 1
   },
   {
-   "fieldname": "against_incoice",
+   "fieldname": "payment_method",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Payment Method",
+   "options": "Cash\nBank Transfer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "payment_amount",
+   "fieldtype": "Currency",
+   "label": "Amount",
+   "reqd": 1
+  },
+  {
+   "fieldname": "against_invoice",
    "fieldtype": "Dynamic Link",
    "in_list_view": 1,
    "label": "Against Invoice",
@@ -27,15 +43,17 @@
    "reqd": 1
   },
   {
-   "fieldname": "from_account",
+   "fieldname": "amended_from",
    "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "From Account",
-   "options": "Account",
-   "reqd": 1
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Payment Entry",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
- "modified": "2019-08-12 16:16:19.894592",
+ "is_submittable": 1,
+ "modified": "2019-08-14 14:18:18.296999",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Payment Entry",
@@ -54,7 +72,6 @@
    "write": 1
   }
  ],
- "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "track_changes": 1

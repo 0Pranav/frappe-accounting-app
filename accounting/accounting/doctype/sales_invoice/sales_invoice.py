@@ -4,39 +4,32 @@
 
 from __future__ import unicode_literals
 import frappe
+from accounting.accounting.doctype.general_ledger.general_ledger import GeneralLedger
 import datetime
 from frappe.model.document import Document
 
-class SalesInvoice(Document):
-	def before_submit(self, *args, **kwargs):
-		customer = frappe.get_doc("Customer",self.customer)
-		customer_account = frappe.get_doc("Account",customer.customer_account)
-		sales_account = frappe.get_doc("Account","Sales Income")
-		
-		# Adjust balance in accounts
-		customer_account.account_balance = customer_account.account_balance + self.total
-		customer_account.save()
-		sales_account.account_balance = sales_account.account_balance + self.total
-		sales_account.save()
-		
-		# Debit Entry
-		debit_entry = frappe.new_doc("General Ledger")
-		debit_entry.posting_date = datetime.date.today()
-		debit_entry.account_affected = customer_account.name
-		debit_entry.credited_amount = 0
-		debit_entry.debited_amount = self.total
-		debit_entry.account_balance = customer_account.account_balance
-		debit_entry.txn_type = "Sales Invoice"
-		debit_entry.txn_id = self.name
-		debit_entry.save()
 
-		# Credit Entry
-		credit_entry = frappe.new_doc("General Ledger")
-		credit_entry.posting_date = datetime.date.today()
-		credit_entry.account_affected = sales_account.name
-		credit_entry.credited_amount = self.total
-		credit_entry.debited_amount = 0
-		credit_entry.account_balance = sales_account.account_balance
-		credit_entry.txn_type = "Sales Invoice"
-		credit_entry.txn_id = self.name
-		credit_entry.save()
+class SalesInvoice(Document):
+
+    def before_submit(self, *args, **kwargs):
+        total = 0
+        for item in self.items:
+            total += item.item_total
+        if total != self.total:
+            frappe.throw("Items totals and Invoice total doesn't match")
+        customer = frappe.get_doc("Customer", self.customer)
+        customer_account = frappe.get_doc("Account", customer.customer_account)
+        sales_account = frappe.get_doc("Account", "Sales Income")
+        customer_account.debit(self.total)
+        sales_account.credit(self.total)
+        GeneralLedger.make_double_entry(credit_account=sales_account, debit_account=customer_account,
+                                        amount=self.total, txn_id=self.name, txn_type="Sales Invoice")
+
+    def before_cancel(self):
+        customer = frappe.get_doc("Customer", self.customer)
+        customer_account = frappe.get_doc("Account", customer.customer_account)
+        sales_account = frappe.get_doc("Account", "Sales Income")
+        customer_account.credit(self.total)
+        sales_account.debit(self.total)
+        GeneralLedger.make_double_entry(credit_account=customer_account, debit_account=sales_account,
+                                        amount=self.total, txn_id=self.name, txn_type="Sales Invoice")
