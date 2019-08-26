@@ -35,13 +35,14 @@
   },
   {
    "fieldname": "item_total",
-   "fieldtype": "Read Only",
+   "fieldtype": "Currency",
    "in_list_view": 1,
    "label": "Item Total",
+   "read_only": 1,
    "reqd": 1
   }
  ],
- "modified": "2019-07-31 12:31:52.902284",
+ "modified": "2019-08-14 16:28:11.975175",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Invoice List Item",
